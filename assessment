@@ -1,0 +1,107 @@
+'use strict';
+
+// let numero1 = prompt(' Introduce el primer numero:');
+// let numero2 = prompt(' Introduce el segundo numero:');
+// let operacion = prompt('escribe que quieres hacer: suma, resta, multiplica, divide, potencia');
+
+// if (Number(numero1) == numero1 && Number(numero2) == numero2) {
+//   numero1 = Number(numero1);
+//   numero2 = Number(numero2);
+// } else {
+//   alert('introduce solo numeros con caracteres numericos');
+// }
+
+// function operando(numero1, numero2, operacion) {
+//   if (operacion === 'suma') {
+//     let resultado = numero1 + numero2;
+//     console.log(resultado);
+//   } else if (operacion === 'resta') {
+//     let resultado = numero1 - numero2;
+//     console.log(resultado);
+//   } else if (operacion === 'multiplica') {
+//     let resultado = numero1 * numero2;
+//     console.log(resultado);
+//   } else if (operacion === 'divide') {
+//     let resultado = numero1 / numero2;
+//     console.log(resultado);
+//   } else if (operacion === 'potencia') {
+//     let resultado = numero1 ** numero2;
+//     console.log(resultado);
+//   } else {
+//     alert('introduce una operacion valida, escribe: suma, resta, multiplica, divide o potencia');
+//   }
+// }
+// operando(numero1, numero2, operacion);
+
+// ----------------------------------- DADO ELECTRONICO
+
+// let totalScore = 0;
+
+// function tiradaDado() {
+//   let dado = parseInt(6 * Math.random()) + 1;
+//   return dado;
+// }
+
+// while (totalScore < 50) {
+//   let nuevaTirada = tiradaDado();
+//   totalScore = totalScore + nuevaTirada;
+//   console.log('tirada dado: ', nuevaTirada);
+//   console.log('totalScore: ', totalScore);
+// }
+// alert('Fin del juego');
+
+//------------------------ REGISTRO ACADEMICO
+
+class Person {
+  name;
+  age;
+  gender;
+  constructor(name, age, gender) {
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+}
+class Student extends Person {
+  subject;
+  group;
+  constructor(name, age, gender, subject, group) {
+    super(name, age, gender);
+    this.subject = subject;
+    this.group = group;
+  }
+  static createStudents(names, age, gender, subject, group) {
+    return names.map((name, index) => {
+      return new Student(name, age[index], gender[index], subject[index], group[index]);
+    });
+  }
+}
+
+class Teacher extends Person {
+  subject;
+  group;
+  studentList;
+  constructor(name, age, gender, subject, group, studentList) {
+    super(name, age, gender);
+    this.subject = subject;
+    this.group = group;
+    this.studentList = studentList;
+  }
+  static createTeachers(names, age, gender, subject, group, studentList) {
+    return names.map((name, index) => {
+      return new Teacher(name, age[index], gender[index], subject[index], group[index], studentList[index]);
+    });
+  }
+}
+
+const names = ['student1', 'student2', 'student3', 'student4', 'student5', 'student6'];
+const age = [20, 22, 24, 26, 28, 30];
+const gender = ['man', 'woman', 'man', 'woman', 'man', 'woman'];
+const subject = ['subject1', 'subject2', 'subject3', 'subject1', 'subject2', 'subject3'];
+const group = ['grupo1', 'grupo2', 'grupo3', 'grupo1', 'grupo2', 'grupo3'];
+
+const studentList = [];
+const students = Student.createStudents(names, age, gender, subject, group);
+console.log(students);
+const teachers = Teacher.createTeachers(names, age, gender, subject, group, studentList);
+console.log(teachers);
