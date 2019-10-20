@@ -1,4 +1,6 @@
+'use strict';
 
+//----------------- CALCULADORA
 
 // let numero1 = prompt(' Introduce el primer numero:');
 // let numero2 = prompt(' Introduce el segundo numero:');
